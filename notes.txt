@@ -2,4 +2,5 @@
 download Arduino IDE from:
 https://www.arduino.cc/en/Main/Software
 
+for sound sensor: turn cw for more sensitive to noise
 
