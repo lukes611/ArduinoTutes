@@ -1,3 +1,15 @@
+/*
+ * connect 5v to 5v, gnd to gnd
+ * 
+ * 
+ *
+ * 
+ * connect the SDA (data) pin to the arduino's A4 pin (analoge 4, the I2C data pin) 
+ * connect the SCL (click) pin to the arduino's A5 pin (analogue 5, the I2C clock pin)
+ * 
+ * 
+ */
+
 // MPU-6050 Short Example Sketch
 // By Arduino User JohnChi
 // August 17, 2014
