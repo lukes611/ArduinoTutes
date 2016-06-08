@@ -1,7 +1,7 @@
 const byte LED[] = {13,12,11,10};
  
 #define BUTTON1 A1
-#define BUTTON2 A3
+#define BUTTON2 A2
  
 void setup()
 {
