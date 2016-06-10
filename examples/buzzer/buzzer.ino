@@ -1,18 +1,18 @@
-// the setup function runs once when you press reset or power the board
-int outPin = 3, f = 400;
+/*
+ * Connect I/O to digital pin 3
+ * Connect VCC to 5v
+ * Connect GND to gnd
+ */
+int ioPin, frequency = 400;
 
 void setup() {
-  Serial.begin(9600);
-  outPin = 3;
-  pinMode(outPin, OUTPUT);
+  ioPin = 3;
+  pinMode(ioPin, OUTPUT);
 }
 
 void loop() {
-  if(Serial.available()){
-    f = Serial.readString().toInt();
-  }
-  digitalWrite(outPin, LOW);
-  delay(1000 / f);
-  digitalWrite(outPin, HIGH);
-  delay(1000 / f);
+  digitalWrite(ioPin, LOW);
+  delay(500 / (double)frequency);
+  digitalWrite(ioPin, HIGH);
+  delay(500 / (double)frequency);
 }
