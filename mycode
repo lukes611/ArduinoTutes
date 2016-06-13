@@ -1,0 +1,110 @@
+from collections import deque
+
+'''
+rules:
+*form ladder from one word to the next by chaning at most 1 character
+*words cannot be repeated
+1 points: A, E, I, L, N, O, R, S, T, U
+2 points: D, G
+3 points: B, C, M, P
+4 points: F, H, V, W, Y
+5 points: K
+8 points: J, X
+10 points: Q, Z
+each words score is the sum of the points for each letter (given above)
+ladder must contain an odd number of words
+
+
+bfs rules:
+    find the highest score word ladder
+    must find at least 1 child
+    score must be higher than the last
+    there must have been an odd number of scores
+    
+need to: setup a graph quickly
+
+'''
+def keyCodes(word):
+    ret = []
+    word = list(word)
+    for letter in range(len(word)):
+        key = word[:]
+        key[letter] = '_'
+        ret.append(''.join(key))
+    return ret
+def generateGraph(words):
+    graph = {}
+    for word in words:
+        for key in keyCodes(word):
+            if key not in graph:
+                graph[key] = [word]
+            else: graph[key].append(word)
+    return graph
+def findNeighbours(word, graph):
+    ret = []
+    for key in keyCodes(word):
+        for item in graph[key]:
+            if item not in ret and word != item:
+                ret.append(item)
+    return ret
+def genScores(words):
+    ret = {}
+    scores = ['AEILNORSTU', 'DG', 'B, C, M, P', 'FHVWY','K', 'JX', 'QZ']
+    for word in words:
+        sum = 0
+        for letter in word:
+            for i,sc in enumerate(scores):
+                if letter in sc:
+                    sum += i+1
+        ret[word] = sum
+    return ret
+
+def bfs(info, states, comparisonFunc, countFunc): #comparisonFunc takes, node, prevScore, myScore
+    if len(states) == 0: return
+    node, scoreCount, count, prevScore = states.popleft()
+    count += 1
+    myScore = info["scores"][node]
+    if not comparisonFunc(node, prevScore, myScore): return
+    scoreCount += myScore
+    info["history"][node] = True
+    #if goal met:
+    print(node, myScore, prevScore)
+    if countFunc(count) and scoreCount > info["hs"]:
+        info["hs"] = scoreCount
+        #write goal
+    ns = findNeighbours(node, info["graph"])
+    for n in ns:
+        if not comparisonFunc(n, myScore, info["scores"][n]) >= myScore and n not in info["history"]:
+            states.append((n, scoreCount+0, count+0, myScore+0))
+    bfs(info, states)
+    
+
+
+numLetters = int(input())
+numWords = int(input())
+words = [word for word in [input() for i in range(numWords)] if len(word) == numLetters]
+g = generateGraph(words)
+scores = genScores(words)
+
+def genInfo():
+    info = {
+        "scores":scores,
+        "graph" : g,
+        "history": {},
+        "hs" : 0
+    }
+    return info
+hss = []
+print(scores)
+for w in words:
+    info = genInfo()
+    print('starting ', w)
+    states = deque()
+    states.append((w, 0, 0, 0))
+    bfs(info, states, lambda node, prev, mys: prev < mys, )
+    hss.append(info["hs"])
+    print(info["hs"])
+print(max(hss))
+
+
+
