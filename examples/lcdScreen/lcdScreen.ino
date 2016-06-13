@@ -8,15 +8,15 @@ void setup() {
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.setCursor(0,0);
+  lcd.setCursor(0,0); //set the cursor to column 0, row 0
   lcd.print("LCD Key Shield");
-  lcd.setCursor(0,1);
+  lcd.setCursor(0,1); //set the cursor to column 0, row 1
   lcd.print("Press Key:");
 }
 
 void loop() {
   int x;
-  x = analogRead (0);
+  x = analogRead (0); //read button input from Analog pin 0
   lcd.setCursor(10,1); //move cursor to row 1, column 10
   if (x < 60) {
     lcd.print ("Right ");
