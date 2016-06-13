@@ -4,7 +4,7 @@
 #define DATA_DIO 8
  
 /* Segment byte maps for numbers 0 to 9 */
-const byte SEGMENT_MAP[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0X80,0X90};
+const byte SEGMENT_MAP[] = {0x80,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0X80,0X90};
 /* Byte maps to select digit 1 to 4 */
 const byte SEGMENT_SELECT[] = {0xF1,0xF2,0xF4,0xF8};
  
@@ -21,7 +21,7 @@ void loop()
 {
  
 /* Update the display with the current counter value */
-WriteNumberToSegment(0 , 5);
+WriteNumberToSegment(0 , 0);
 WriteNumberToSegment(1 , 6);
 WriteNumberToSegment(2 , 7);
 WriteNumberToSegment(3 , 8);
