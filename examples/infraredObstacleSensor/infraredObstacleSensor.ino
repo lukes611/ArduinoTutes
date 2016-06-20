@@ -1,29 +1,12 @@
-// IR Obstacle Collision Detection Module
-// Henry's Bench
-
-int LED = 13; // Use the onboard Uno LED
-int isObstaclePin = 7;  // This is our input pin
-int isObstacle = HIGH;  // HIGH MEANS NO OBSTACLE
-
+//connect OUT pin to digital 7, gnd to gnd and vcc to 5v
+int isObstaclePin = 7;
 void setup() {
-  pinMode(LED, OUTPUT);
   pinMode(isObstaclePin, INPUT);
   Serial.begin(9600);
-  
-}
-
+ }
 void loop() {
-  isObstacle = digitalRead(isObstaclePin);
-  if (isObstacle == LOW)
-  {
-    Serial.println("OBSTACLE!!, OBSTACLE!!");
-    digitalWrite(LED, HIGH);
-  }
-  else
-  {
-    Serial.println("clear");
-    digitalWrite(LED, LOW);
-  }
+  if (!digitalRead(isObstaclePin))
+    Serial.println("obstacle detected");
   delay(200);
 }
 

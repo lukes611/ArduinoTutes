@@ -1,7 +1,9 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-//I is VCC, S is GND
+//I is VCC
+//S is GND
+//The middle pin is digital pin 2
  
 // Data wire is plugged into pin 2 on the Arduino
 #define ONE_WIRE_BUS 2
