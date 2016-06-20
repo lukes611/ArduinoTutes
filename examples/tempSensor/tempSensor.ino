@@ -38,6 +38,7 @@ void loop(void)
   Serial.print(sensors.getTempCByIndex(0)); // Why "byIndex"? 
     // You can have more than one IC on the same bus. 
     // 0 refers to the first IC on the wire
+    delay(100);
  
 }
 
