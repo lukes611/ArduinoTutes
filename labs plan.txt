@@ -1,3 +1,5 @@
+add in temperature and the comm-sys
+
 Schedule:
 1. hello-world: compass + servo
 	create a program which gets the compass heading and outputs it to the servo,
@@ -24,13 +26,90 @@ void loop()
 
 2. tunes/melodies using loops
 	create a program which plays notes, give the frequency to note
+
+Lab 2: Random Access Melody
+
+If you haven't run through the basics of the buzzer module, please read that section prior to beginning this lab. In this lab you are required to write a program to play a tune on your arduino. Basic melodies are created by playing notes one after the other (each note is played for a specific amount of time and sometimes there is an intentional absense of sound for a specific amount of time. In music, notes include C, C-Sharp, D, E-Flat, E, F, F-Sharp, G, G-Sharp, A, B-Flat and B. Moreover these notes may be played at different octaves (pitches) and each combination of note and octave corresponds to a single identifiable frequency. 
+
+In this lab you will be required to write a function to play a note (or play nothing) for a specific amount of time. This function should have the signature:
+
+playNote(char note, int sharpOrFlat, int numMilliseconds);
+
+The function must play note 'note' for 'numMilliseconds' milliseconds. The note is input as a char type, this may be 'c', 'd', 'e', 'f', 'g', 'a', 'b' or '-'. sharpOrFlat is an integer where a 1 signifies the note must be flat or sharp, and 0 means the normal note is to be played. And character '-' means that no note should be played for the disired amount of milliseconds. 
+
+Here listed is a translation table for notes to frequencies. The playNode() function must convert the note and sharpOrFlat variables to a frequency and play the note for the desired number of milliseconds.  The following is a translation table from note to frequency. 
+
+C 	: 523Hz
+C-Sharp : 554Hz
+D 	: 587Hz
+E-Flat	: 622Hz
+E	: 659Hz
+F	: 698Hz
+F-Sharp	: 740Hz
+G	: 784Hz
+G-Sharp	: 831Hz
+A	: 880Hz
+B-Flat	: 932Hz
+B	: 988Hz
+
+Using the playNote() function, play the opening part of jingle bells. We describe the melody using tuples of the form (note,millisecond):
+
+Jingle-Bells : [(E,400), (E,400), (E,800), (E,400), (E,400), (E,800), (E,400), (G,400), (C,400), (D,400), (E,1600)]
+
+Next, you must choose a melody from a favourite song and research the notes and play it. 
+
 3. 7-segment display
 	get the user to input buttons to control the 7-segment display
+
+Lab 3: Click Counter
+
+If you have not yet read the introduction to the 7-Segment Display in the Digital Multi-Function Shield section and the Button Click detection in the same section. In this labe you will be required to implement a counter with a button click as input. Essentially, the seven segment display will display the value of a counter, the counter will go from 0 to 100 then loop back to 0. Choose a button on the Seven Segment Display to act as an event generator for the counter to increase. 
+
+Use a variable "count" which has an initial value of zero, and a function called mustIncrement() which is called in a loop. When the button is pressed it returns a 1 else 0. Use this to increment count. Remember the seven-segment display must be driven using a look-up table and you must find each decimal place value in "count." For example the number 64 has 6 in the tens location and a 4 in the ones location. Use integer division ( / ) and the modulo function ( % ) to find these values. 
+
+Write a function showNumber(); which shows the count variable in the seven segment display.
+
+Your loop function may therefore look like the following:
+
+void loop()
+{
+	count += checkIncrement();
+	showNumber(count);
+}
+
 4. arduino: decimal to binary (assessed)
 	get the user to input some number in decimal and output it in binary using blinking
+
+In this lab you will be using the key-board input in conjunction with the LCD-Display. You are required to write a program which takes input in the form of an integer, and recieve it using the Arduino using the Serial object. This integer must then be converted to binary and the binary string must be sent to the LCD display. If you haven't looked at the Serial input section or the LCD driving tutorial, please read these before beginning this lab. 
+
+One way to convert a decimal number to a binary string is the modulo method. Given a decimal number x, take the integer division by 2 and the modulo by 2 (the remainder) as a tuple: t=(x/2, x%2). Then the output is given by the remainder, and the new value of x is given as the integer division. x = t[0], output = t[1]. Repeating this until x is zero gives a list of output values, which when ordered in reverse order constitute the binary output for the initial x value. 
+
 5. gyroscope-pointers
 	get the students to get the gyroscope things using pointers
+
+Lab 5: IMU and Pointers
+
+In this lab, you will be required to write a function which hides away the complexity of retrieving the values generated by the IMU. Since the return values of this function will be 6 integers and a float, a single return value will not suffice. We must use pointers. Write a function to retrieve the IMU values with the following signature:
+
+void retrieveIMUData(int * xDirection, int * yDirection, int * zDirection,
+			int * xAccel, int * yAccel, int * zAccel, float * temperature);
+
+Retrieve the values and store them in the locations pointed to by the pointers given as input to the function.
+
+
+
 6. temperature (arrays)
 	get the temperature and place it in a circular array, compute the median, mean and mode of 	the array
+
+Lab 6: Temperature Data
+
+In this lab we will be retrieving temperature data and computing various statistics on it. This is a common operation in computer science. Using a variable N (maximum value: 100) and an array of 100 floating point numbers named temps (float temps[100]), insert items into the array by means of a circular buffer (where there are a maximum of N items in the buffer). Periodically add the latest temperature into the array, replacing the oldest temperature currently stored. Then compute several statistics about the list. The statistics to be computed include: the mean (the average), the mode (the most frequently occuring temperature) and the median (if the list of temperatures were sorted, the median would be the number at the centre of the list). 
+
+Note: In order to implement a circular array, we need a counter: C with an initial value of 0 (int C = 0;). We can add a new item to our array using the modulo function with C: temps[C++ % N] = getNewTemperature();. Then we can compute various statistics on the array, eg. float mean = 0.0f; for(int i = 0; i < N; i++) mean += temps[i] / (float) N; //output mean. We leave the median and mode for you to write.
+
+Advanced: Early on in the program, there will not be N number of temperatures recorded, but currently our algorithm takes the initial values in temps as filler. Extend the application by only taking into account the temperatures and number of temperatures which have been recorded by the module. You will need to add another variable used in conjunction with C, this variable will represent the length of the array (which will eventually grow to N).
+
+
+
 7. communication + encryption
 	get the students to implement their own communication algorithm: show them some 	example techniques and tell em 
