@@ -1,0 +1,18 @@
+Schedule:
+1. hello-world: compass + servo
+	create a program which gets the compass heading and outputs it to the servo,
+	
+E
+
+2. tunes/melodies using loops
+	create a program which plays notes, give the frequency to note
+3. 7-segment display
+	get the user to input buttons to control the 7-segment display
+4. arduino: decimal to binary (assessed)
+	get the user to input some number in decimal and output it in binary using blinking
+5. gyroscope-pointers
+	get the students to get the gyroscope things using pointers
+6. temperature (arrays)
+	get the temperature and place it in a circular array, compute the median, mean and mode of 	the array
+7. communication + encryption
+	get the students to implement their own communication algorithm: show them some 	example techniques and tell em w
