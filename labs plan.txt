@@ -2,7 +2,25 @@ Schedule:
 1. hello-world: compass + servo
 	create a program which gets the compass heading and outputs it to the servo,
 	
-E
+Lab 1: Compass to Servo
+
+If you haven't setup your development environment for the Arduino or run through the basics of using both the compass and the servo motor, please do so prior to beginning this lab. In this lab you will be required to re-direct the heading from the compass module into the direction of the servo motor. 
+
+Write a C-program which first extracts the compass heading in degrees (not radians). Next, send this angular value to the servo. This process is to repeat once every second. Use a global integer MapType which is either one or zero. If it is zero, whichever value (from 0 to 360) which the compass gives, output that value directly. If the MapType is one, then make sure the 0 to 360 value is mapped to 0 - 180. Use scaling (multiplication) to achieve this.
+
+(Advanced) Next week you will study about functions. Functions allow the programmer to break up a program into modular pieces. Repeat this lab using functions, one function called get-heading has the signature: 
+	int getHeading();
+The other function set-Servo has the signature:
+	void setServo(int heading, int map_type);
+
+Your loop function may end up looking something like this:
+
+void loop()
+{
+	setServo(getHeading(), MapType), delay(1000);
+}
+
+
 
 2. tunes/melodies using loops
 	create a program which plays notes, give the frequency to note
@@ -15,4 +33,4 @@ E
 6. temperature (arrays)
 	get the temperature and place it in a circular array, compute the median, mean and mode of 	the array
 7. communication + encryption
-	get the students to implement their own communication algorithm: show them some 	example techniques and tell em w
+	get the students to implement their own communication algorithm: show them some 	example techniques and tell em 
