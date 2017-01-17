@@ -112,4 +112,10 @@ Advanced: Early on in the program, there will not be N number of temperatures re
 
 
 7. communication + encryption
-	get the students to implement their own communication algorithm: show them some 	example techniques and tell em 
+	get the students to implement their own communication algorithm: show them some example techniques and tell em 
+
+Lab 7: Encrypted Communication
+
+In this lab you will be required to create your own encryption algorithm to send secret messages between two arduinos. To complete this lab you shoud complete the Wireless communication module tutorial. Here you must use the modules to transmit a secret message to your partner (or your other arduino). You will be 
+
+
