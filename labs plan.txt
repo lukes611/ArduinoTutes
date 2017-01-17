@@ -99,7 +99,7 @@ Retrieve the values and store them in the locations pointed to by the pointers g
 
 
 6. temperature (arrays)
-	get the temperature and place it in a circular array, compute the median, mean and mode of 	the array
+	get the temperature and place it in a circular array, compute the median, mean and mode of the array
 
 Lab 6: Temperature Data
 
@@ -116,6 +116,13 @@ Advanced: Early on in the program, there will not be N number of temperatures re
 
 Lab 7: Encrypted Communication
 
-In this lab you will be required to create your own encryption algorithm to send secret messages between two arduinos. To complete this lab you shoud complete the Wireless communication module tutorial. Here you must use the modules to transmit a secret message to your partner (or your other arduino). You will be 
+In this lab you will be required to create your own encryption algorithm to send secret messages between two arduinos. To complete this lab you shoud complete the Wireless communication module tutorial. Here you must use the modules to transmit a secret message to your partner (or your other arduino). You must first perform two types of encryption on this message prior to sending. One is the Caesar Cipher and the other is the shift cipher. In the Caesar cipher, you must shift the each character along the alphabet by a certain amount and substitute each character for the corresponding one in the shift. For example, apple shifted along by 2 would be output as: crrng. The problem with this is the secret message may still be found out due to statistical analysis. For example, there may only be a subset of words which have double letters (pp in apple = rr in crrng) and hackers may exploit these statitics with other secret messages sent. Therefore it is a good idea to implement a shift cipher along with the Caesar (substitution cipher). For example, we may shift the letters by a reccuring list of shift values, for example 0,1,2,0,1,2... may be used to shift "apple start program" to "aqrlf utbtt qtohtan" where a in apple was shifted 0 times to a, the second p in apple was shifted once to q and the third apple was shifted twice to r and so on and so forth.
+
+In this lab you must implement the shift-substitution cipher, use pointers and a function enc() to encrypt a message. This function must take an input string along with an input array where each element in the array is a shift value (the shift pattern in the array is repeated eg. 0,1,2;0,1,2;0,1,2...). You must also write a function called dec() to decrypt a string. These functions must have the following signatures:
+
+void enc(char * input, char * output, int * shiftPattern, int shiftPatternLength);
+void dec(char * input, char * output, int * shiftPattern, int shiftPatternLength);
+
+Implement these functions and use them with your friends to send secret messages with eachother. Make sure to rendezvous with oneanother to exchange shift patterns. Note: this type of cipher may still be cracked. But even today, the best encryption methods are based on substitution and pattern shifting.
 
 
