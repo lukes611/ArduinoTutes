@@ -27,13 +27,13 @@ void loop()
 2. tunes/melodies using loops
 	create a program which plays notes, give the frequency to note
 
-Lab 2: Random Access Melody
+Lab 2: Random Access Melodies
 
 If you haven't run through the basics of the buzzer module, please read that section prior to beginning this lab. In this lab you are required to write a program to play a tune on your arduino. Basic melodies are created by playing notes one after the other (each note is played for a specific amount of time and sometimes there is an intentional absense of sound for a specific amount of time. In music, notes include C, C-Sharp, D, E-Flat, E, F, F-Sharp, G, G-Sharp, A, B-Flat and B. Moreover these notes may be played at different octaves (pitches) and each combination of note and octave corresponds to a single identifiable frequency. 
 
 In this lab you will be required to write a function to play a note (or play nothing) for a specific amount of time. This function should have the signature:
 
-playNote(char note, int sharpOrFlat, int numMilliseconds);
+void playNote(char note, int sharpOrFlat, int numMilliseconds);
 
 The function must play note 'note' for 'numMilliseconds' milliseconds. The note is input as a char type, this may be 'c', 'd', 'e', 'f', 'g', 'a', 'b' or '-'. sharpOrFlat is an integer where a 1 signifies the note must be flat or sharp, and 0 means the normal note is to be played. And character '-' means that no note should be played for the disired amount of milliseconds. 
 
@@ -101,7 +101,7 @@ Retrieve the values and store them in the locations pointed to by the pointers g
 6. temperature (arrays)
 	get the temperature and place it in a circular array, compute the median, mean and mode of the array
 
-Lab 6: Temperature Data
+Lab 6: Temperature Stats
 
 In this lab we will be retrieving temperature data and computing various statistics on it. This is a common operation in computer science. Using a variable N (maximum value: 100) and an array of 100 floating point numbers named temps (float temps[100]), insert items into the array by means of a circular buffer (where there are a maximum of N items in the buffer). Periodically add the latest temperature into the array, replacing the oldest temperature currently stored. Then compute several statistics about the list. The statistics to be computed include: the mean (the average), the mode (the most frequently occuring temperature) and the median (if the list of temperatures were sorted, the median would be the number at the centre of the list). 
 
