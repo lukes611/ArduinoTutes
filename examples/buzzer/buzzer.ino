@@ -16,3 +16,4 @@ void loop() {
   digitalWrite(ioPin, HIGH);
   delay(500 / (double)frequency);
 }
+
